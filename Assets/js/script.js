@@ -23,7 +23,7 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword() {
   var confirmLength = (prompt("How many characters would you like your password to contain?"));
   var choices;
- // Loop if answer is outside the parameters 
+ // Loop if answer is not a number or out of 8-128
   while(confirmLength < 8 || confirmLength > 128) {
   alert("Password length must be between 8-128 characters Try again");
   var confirmLength = (prompt("How many characters would you like your password to contain?"));
@@ -37,13 +37,18 @@ function generatePassword() {
   var includeUppercase = confirm("Will this contain Uppercase letters?");
   var includeLowercase = confirm("Will this contain Lowercase letters?");
 
-  // Else if for 4 negative options
-  if (!includeCharacter && !includeNumber && !includeUppercase && !includeLowercase) {
+  // While loop for 4 negative options
+  // Will repeat to get criteria
+  while (!includeCharacter && !includeNumber && !includeUppercase && !includeLowercase) {
       choices = alert("You must choose a criteria!");
+        var includeNumber = confirm("Will this contain numbers?");
+        var includeCharacter = confirm("Will this contain special characters?");
+        var includeUppercase = confirm("Will this contain Uppercase letters?");
+        var includeLowercase = confirm("Will this contain Lowercase letters?");
   }
   // First if statement that uses user input prompts to determine choices
-  // Else if for 4 positive options
-  else if (includeCharacter && includeNumber && includeUppercase && includeLowercase) {
+  // If for 4 positive options
+  if (includeCharacter && includeNumber && includeUppercase && includeLowercase) {
       choices = specialCharacters.concat(numericCharacters, lowerCasedCharacters, upperCasedCharacters);
   }
   // Else if for 3 positive options
@@ -88,7 +93,7 @@ function generatePassword() {
   else if (includeLowercase) {
       choices = lowerCasedCharacters;
   }
-  // Created space variable to fill uppercase conversion
+  
   else if (includeUppercase) {
       choices = upperCasedCharacters;
   };
