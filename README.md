@@ -28,3 +28,8 @@
 * After all prompts have been answered, the password will show in the box and can be highlighted and copied.
 
 ![](Assets/images/password-generated.jpg)
+
+### Features
+* HTML
+* CSS
+* JS
